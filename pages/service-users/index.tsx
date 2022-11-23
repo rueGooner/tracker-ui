@@ -24,6 +24,7 @@ type ServiceUser = {
   movedIn: Date | null;
   updatedAt: Date;
   conditions: string[];
+  roomNumber: number;
 };
 
 type PageProps = {
@@ -35,15 +36,16 @@ const ServiceUsers: NextPage<PageProps> = ({ serviceUsers }) => {
 
   return (
     <Layout>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" w="100%">
         <Heading>Service Users</Heading>
-        <TableContainer overflowY="auto">
+        <TableContainer overflowY="auto" w="100%">
           <Table variant="striped" colorScheme="teal" size="sm">
             <Thead>
               <Tr>
                 <Th>ID</Th>
                 <Th>Name</Th>
                 <Th>Surname</Th>
+                <Th>Room #</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -53,6 +55,7 @@ const ServiceUsers: NextPage<PageProps> = ({ serviceUsers }) => {
                     <Td>{serviceUser.id}</Td>
                     <Td>{serviceUser.name}</Td>
                     <Td>{serviceUser.surname}</Td>
+                    <Td>{serviceUser.roomNumber ?? "-"}</Td>
                   </Tr>
                 )
               )}
